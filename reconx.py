@@ -6,8 +6,6 @@ Author: Shaheer Hussain
 
 import argparse
 import sys
-import logging
-from datetime import datetime
 from pathlib import Path
 
 __version__ = "1.0.0-dev"
@@ -43,6 +41,8 @@ def parse_arguments():
     parser.add_argument('-d', '--domain', required=True, help='Target domain')
     parser.add_argument('--recon', action='store_true', help='Run reconnaissance')
     parser.add_argument('--vuln', action='store_true', help='Run vulnerability scan')
+    parser.add_argument('--sqli', action='store_true', help='SQL injection test')
+    parser.add_argument('--url', help='Target URL for vulnerability testing')
     parser.add_argument('--scan', action='store_true', help='Full scan')
     return parser.parse_args()
 
@@ -58,6 +58,16 @@ def main():
         enum = SubdomainEnumerator(args.domain)
         results = enum.run()
         print(f"{Colors.OKGREEN}[✓] Found {results['total_subdomains']} subdomains{Colors.ENDC}")
+    
+    if args.sqli and args.url:
+        print(f"{Colors.OKGREEN}[+] Starting SQL injection test...{Colors.ENDC}")
+        from modules.vuln.sqli_detector import SQLiDetector
+        scanner = SQLiDetector()
+        vulns = scanner.test_url(args.url)
+        if vulns:
+            print(f"{Colors.FAIL}[!] Found {len(vulns)} SQL injection vulnerabilities{Colors.ENDC}")
+        else:
+            print(f"{Colors.OKGREEN}[✓] No SQL injection vulnerabilities found{Colors.ENDC}")
 
 if __name__ == "__main__":
     main()
