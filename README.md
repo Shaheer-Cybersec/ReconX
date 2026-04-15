@@ -76,7 +76,7 @@ Unauthorized access is illegal under CFAA (USA), Computer Misuse Act (UK), and s
 - 📧 shaheerch6@gmail.com
 
 **Certifications:**
-- CEH v12 (In Progress)
+
 - API Penetration Testing (APIsec University)
 - ISC2 Certified in Cybersecurity
 
