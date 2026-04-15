@@ -42,6 +42,7 @@ def parse_arguments():
     parser.add_argument('--recon', action='store_true', help='Run reconnaissance')
     parser.add_argument('--vuln', action='store_true', help='Run vulnerability scan')
     parser.add_argument('--sqli', action='store_true', help='SQL injection test')
+    parser.add_argument('--xss', action='store_true', help='XSS test')
     parser.add_argument('--url', help='Target URL for vulnerability testing')
     parser.add_argument('--scan', action='store_true', help='Full scan')
     return parser.parse_args()
@@ -68,6 +69,16 @@ def main():
             print(f"{Colors.FAIL}[!] Found {len(vulns)} SQL injection vulnerabilities{Colors.ENDC}")
         else:
             print(f"{Colors.OKGREEN}[✓] No SQL injection vulnerabilities found{Colors.ENDC}")
+    
+    if args.xss and args.url:
+        print(f"{Colors.OKGREEN}[+] Starting XSS test...{Colors.ENDC}")
+        from modules.vuln.xss_scanner import XSSScanner
+        scanner = XSSScanner()
+        vulns = scanner.test_url(args.url)
+        if vulns:
+            print(f"{Colors.FAIL}[!] Found {len(vulns)} XSS vulnerabilities{Colors.ENDC}")
+        else:
+            print(f"{Colors.OKGREEN}[✓] No XSS vulnerabilities found{Colors.ENDC}")
 
 if __name__ == "__main__":
     main()
