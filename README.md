@@ -4,27 +4,31 @@
 
 [![Python Version](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+[![Status](https://img.shields.io/badge/status-v0.1--dev-orange)]()
 
 > Modular Python framework for OWASP Top 10 vulnerability detection and web application reconnaissance
 
 ## Features
 
 ### Reconnaissance
-- 🔍 Subdomain enumeration (Certificate Transparency + DNS brute-force)
-- 🌐 Port scanning & service detection
-- 🛠️ Technology fingerprinting
-- 🔒 HTTP security header analysis
+
+- ✅ Subdomain enumeration (Certificate Transparency + DNS brute-force)
+- 🚧 Port scanning & service detection (planned)
+- 🚧 Technology fingerprinting (planned)
+- 🚧 HTTP security header analysis (planned)
 
 ### Vulnerability Detection
-- 💉 SQL Injection testing
-- 🚨 Cross-Site Scripting (XSS)
-- 🔓 Open Redirect detection
-- ⚙️ Security misconfiguration checks
+
+- ✅ SQL Injection detector (error-based)
+- ✅ XSS scanner (reflected)
+- 🚧 Open Redirect detection (planned)
+- 🚧 Security misconfiguration checks (planned)
 
 ### Reporting
-- 📄 HTML reports with CVSS scoring
-- 📝 Markdown output
-- 🔗 JSON export for CI/CD
+
+- ✅ HTML report generation
+- 🚧 Markdown output (planned)
+- 🚧 JSON export (planned)
 
 ## Installation
 
@@ -32,7 +36,7 @@
 git clone https://github.com/Shaheer-Cybersec/ReconX.git
 cd ReconX
 python3 -m venv venv
-source venv/bin/activate
+source venv/Scripts/activate  # Windows
 pip install -r requirements.txt
 ```
 
@@ -42,11 +46,11 @@ pip install -r requirements.txt
 # Subdomain enumeration
 python reconx.py -d example.com --recon
 
-# Full vulnerability scan
-python reconx.py -d example.com --vuln
+# SQL injection testing
+python reconx.py -d example.com --sqli --url "http://example.com/page.php?id=1"
 
-# Generate report
-python reconx.py -d example.com --scan --report
+# XSS testing
+python reconx.py -d example.com --xss --url "http://example.com/search.php?q=test"
 ```
 
 ## ⚠️ Legal Disclaimer
@@ -57,19 +61,27 @@ Only use on systems you own or have written permission to test.
 
 Unauthorized access is illegal under CFAA (USA), Computer Misuse Act (UK), and similar laws worldwide.
 
-## Development Status
+## Development Progress
 
-🚧 **Active Development** - v0.1
+**v0.1 (Current)**
 
-- [x] Core framework
-- [x] Subdomain enumeration
-- [ ] SQL injection detector
-- [ ] XSS scanner
-- [ ] Report generation
+- [x] Core framework structure
+- [x] Subdomain enumeration module
+- [x] SQL injection detector
+- [x] XSS scanner
+- [x] Basic HTML report generator
+
+**v0.2 (Next)**
+
+- [ ] Port scanner
+- [ ] Technology detection
+- [ ] Complete report system
+- [ ] Test against DVWA
 
 ## Author
 
-**Shaheer Hussain**
+**Shaheer Hussain**  
+Cybersecurity Analyst | Penetration Testing Enthusiast
 
 - 🎯 TryHackMe: [Top 6%](https://tryhackme.com/p/Cicada664)
 - 💼 LinkedIn: [shaheer-hussain-ch](https://www.linkedin.com/in/shaheer-hussain-ch-2906601a0/)
