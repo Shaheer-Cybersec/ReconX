@@ -43,6 +43,7 @@ def parse_arguments():
     parser.add_argument('--vuln', action='store_true', help='Run vulnerability scan')
     parser.add_argument('--sqli', action='store_true', help='SQL injection test')
     parser.add_argument('--xss', action='store_true', help='XSS test')
+    parser.add_argument('--ports', action='store_true', help='Port scan')
     parser.add_argument('--url', help='Target URL for vulnerability testing')
     parser.add_argument('--scan', action='store_true', help='Full scan')
     return parser.parse_args()
@@ -59,6 +60,13 @@ def main():
         enum = SubdomainEnumerator(args.domain)
         results = enum.run()
         print(f"{Colors.OKGREEN}[✓] Found {results['total_subdomains']} subdomains{Colors.ENDC}")
+    
+    if args.ports or args.scan:
+        print(f"{Colors.OKGREEN}[+] Starting port scan...{Colors.ENDC}")
+        from modules.recon.port_scanner import PortScanner
+        scanner = PortScanner()
+        open_ports = scanner.scan_host(args.domain)
+        print(f"{Colors.OKGREEN}[✓] Port scan complete{Colors.ENDC}")
     
     if args.sqli and args.url:
         print(f"{Colors.OKGREEN}[+] Starting SQL injection test...{Colors.ENDC}")
