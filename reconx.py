@@ -46,6 +46,7 @@ def parse_arguments():
     parser.add_argument('--ports', action='store_true', help='Port scan')
     parser.add_argument('--url', help='Target URL for vulnerability testing')
     parser.add_argument('--scan', action='store_true', help='Full scan')
+    parser.add_argument('--tech', action='store_true', help='Technology detection')
     return parser.parse_args()
 
 def main():
@@ -67,6 +68,12 @@ def main():
         scanner = PortScanner()
         open_ports = scanner.scan_host(args.domain)
         print(f"{Colors.OKGREEN}[✓] Port scan complete{Colors.ENDC}")
+
+    if args.tech or args.scan:
+        print(f"{Colors.OKGREEN}[+] Starting technology detection...{Colors.ENDC}")
+        from modules.recon.tech_detect import TechnologyDetector
+        detector = TechnologyDetector()
+        tech_stack = detector.detect(args.domain)
     
     if args.sqli and args.url:
         print(f"{Colors.OKGREEN}[+] Starting SQL injection test...{Colors.ENDC}")
