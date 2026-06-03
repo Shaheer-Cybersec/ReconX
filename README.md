@@ -4,7 +4,7 @@
 
 [![Python Version](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
-[![Status](https://img.shields.io/badge/status-v0.2-brightgreen)]()
+[![Status](https://img.shields.io/badge/status-v0.1-brightgreen)]()
 
 > Modular Python framework for OWASP Top 10 vulnerability detection and web application reconnaissance
 
@@ -107,10 +107,9 @@ Unauthorized access is illegal under CFAA (USA), Computer Misuse Act (UK), and s
 
 ## Tested Against
 
-- ✅ Google.com (subdomain enumeration)
-- ✅ Tesla.com (subdomain enumeration)
-- ✅ WordPress.com (technology detection)
-- ✅ Public vulnerable sites (SQLi, XSS)
+ - ✅ DVWA (local lab)
+ - ✅ demo.testfire.net
+ - ✅ crAPI (local lab)
 
 ## Author
 
@@ -118,7 +117,7 @@ Unauthorized access is illegal under CFAA (USA), Computer Misuse Act (UK), and s
 Cybersecurity Analyst | Penetration Testing Enthusiast
 
 - 🎯 TryHackMe: [Top 6%](https://tryhackme.com/p/Cicada664)
-- 💼 LinkedIn: [shaheer-hussain-ch](https://www.linkedin.com/in/shaheer-hussain-ch-2906601a0/)
+- 💼 LinkedIn: [shaheer-hussain-ch](www.linkedin.com/in/shaheer-hussain-cybersec)
 - 📧 shaheerch6@gmail.com
 
 **Certifications:**
