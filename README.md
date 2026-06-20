@@ -58,9 +58,14 @@ python reconx.py -d example.com --sqli --url "http://example.com/page.php?id=1"
 # XSS testing
 python reconx.py -d example.com --xss --url "http://example.com/search.php?q=test"
 
-# Full reconnaissance scan
+# Full scan: recon + ports + tech detection (no vuln testing without --url)
 python reconx.py -d example.com --scan
+
+# Full scan including vulnerability testing — runs everything and generates an HTML report
+python reconx.py -d example.com --scan --url "http://example.com/page.php?id=1"
 ```
+
+Every run that performs at least one scan module generates an HTML report automatically, written to `reports/reconx_<domain>_<timestamp>.html`. Use `--output <path>` to set a custom path, or `--no-report` to skip report generation.
 
 ## Example Output
 
@@ -87,7 +92,7 @@ Unauthorized access is illegal under CFAA (USA), Computer Misuse Act (UK), and s
 
 ## Development Progress
 
-**v0.2 (Current - April 2025)**
+**v0.1 (Current)**
 
 - [x] Core framework structure
 - [x] Subdomain enumeration module
@@ -95,21 +100,21 @@ Unauthorized access is illegal under CFAA (USA), Computer Misuse Act (UK), and s
 - [x] Technology detection
 - [x] SQL injection detector
 - [x] XSS scanner
-- [x] Basic HTML report generator
+- [x] HTML report generator — wired into main scan flow
+- [x] `--scan` runs full pipeline including vuln testing (with `--url`)
 
-**v0.3 (Planned - May 2025)**
+**v0.2 (Planned)**
 
-- [ ] Complete report system with all findings
 - [ ] Open redirect detector
 - [ ] Security misconfiguration checks
 - [ ] JSON export
-- [ ] Test against DVWA/bWAPP
+- [ ] Markdown report output
 
 ## Tested Against
 
- - ✅ DVWA (local lab)
- - ✅ demo.testfire.net
- - ✅ crAPI (local lab)
+- ✅ DVWA (local lab)
+- ✅ demo.testfire.net
+- ✅ crAPI (local lab)
 
 ## Author
 
@@ -117,7 +122,7 @@ Unauthorized access is illegal under CFAA (USA), Computer Misuse Act (UK), and s
 Cybersecurity Analyst | Penetration Testing Enthusiast
 
 - 🎯 TryHackMe: [Top 6%](https://tryhackme.com/p/Cicada664)
-- 💼 LinkedIn: [shaheer-hussain-ch](www.linkedin.com/in/shaheer-hussain-cybersec)
+- 💼 LinkedIn: [shaheer-hussain-cybersec](https://www.linkedin.com/in/shaheer-hussain-cybersec)
 - 📧 shaheerch6@gmail.com
 
 **Certifications:**
